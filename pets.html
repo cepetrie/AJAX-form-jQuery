@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pet Addoption</title>
+<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+
+
+<style>
+* {
+margin:0;
+padding:0;	
+}
+
+#wrapper {
+width:960px;
+margin:0 auto;	
+}
+
+h1 {
+padding-top:20px;
+color:purple;	
+}
+
+#hp {
+float:left;	
+width:250px;
+}
+
+#st {
+float:right;
+width:250px;	
+}
+
+fieldset {
+width:300px;	
+	
+}
+
+p {
+margin-bottom:10px;	
+}
+
+
+#legs{display:none}
+
+#fur{display:none} 
+#reset {display:none}
+
+h2 {
+font-weight:bold;
+color:#D4A017;	
+}
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+
+<h1>Pet Adoption Agency</h1>
+<p id="title">Answer the following three questions to help you choose which pet to adopt!</p>
+
+
+<form id="myForm" action="http://www.newmanic.com/formtest.asp" method="post">
+
+<div style="margin-bottom:20px" id="land-water" >
+<h2>Question 1:</h2>
+<p>Would you like a pet that lives on land only or a pet that lives both on land and in the water?</p>
+
+  <input style="margin-top:10px; margin-bottom:5px; margin-right:5px" type="radio" name="land-water" value="lives on land only" id="radio-land" />Lives on land only<br />
+  <input style="margin-top:10px;margin-bottom:5px; margin-right:5px" type ="radio" name="land-water" value="lives both on land and in the water" id="radio-h20" >Lives both on land and in the water<br />
+</div>
+
+
+
+
+<div style="margin-bottom:20px" id="legs" >
+<h2>Question 2:</h2>
+<p>Would you like a pet that has four or more legs or a pet that has two or less legs?</p>
+
+  <input style="margin-top:10px;margin-bottom:5px; margin-right:5px" type="radio" id="radio-four" name="legs" value="four or more legs" />Four or more legs<br />
+  <input style="margin-top:10px;margin-bottom:5px; margin-right:5px" type ="radio" id="radio-two" name="legs" value="two or less legs"  />Two or less legs<br />
+</div>
+
+
+
+
+
+
+
+<div style="margin-bottom:20px" id="fur" >
+
+<h2>Question 3:</h2>
+<p>Would you like a pet that has fur or no fur?</p>
+  <input style="margin-top:10px;margin-bottom:5px; margin-right:5px" type="radio" id="radio-fur" name="fur" value="fur" />Fur<br />
+  <input style="margin-top:10px;margin-bottom:5px; margin-right:5px" type ="radio" id="radio-nofur" name="fur" value="no fur" />No fur<br />
+</div>
+
+
+
+<input type="submit" value="Show me my pet" id="submit" style="margin-top:10px; margin-bottom:10px"/><br />
+</form>
+<div id="myAnswer">
+
+
+</div>
+<input type="submit" value="Reset page" id="reset" style="margin-top:10px; margin-bottom:10px"/><br />
+<script type="text/javascript" >
+
+$("document").ready(function() {
+$("#land-water").click(function(){
+if ($("#radio-land").is(":checked") || $("#radio-h20").is(":checked")) {
+
+        //show the hidden legs div
+         $("#legs").show("slide");
+		 //hide the land-water div
+		 $("#land-water").hide();
+				 						   }
+		});
+		
+		$("#legs").click(function(){
+if ($("#radio-four").is(":checked") || $("#radio-two").is(":checked")) {
+
+        //show the hidden fur div
+         $("#fur").show("slide");
+		 //hide the legs div
+		 	 $("#legs").hide();
+		 						   }
+		});
+		
+		
+		
+		$("#fur").click(function(){
+if ($("#radio-fur").is(":checked") || $("#radio-nofur").is(":checked")) {
+
+        
+		 //hide the fur div
+		 	 $("#fur").hide();
+		 						   }
+		});
+
+});
+
+
+
+		$("document").ready(function(){
+			$('#myForm').submit(function(e){
+			e.preventDefault();
+			var formData = $(this).serialize();
+			$.post('includes/pet_handler3.php', formData, 
+			function(data) {
+				$('#myAnswer').html(data);
+			},'html');
+			   	$('#myForm').hide;	
+ 			$('#reset').show();
+			$('#submit').hide();
+			$('#title').hide();	
+				
+	});
+});
+
+ $('#reset').click(function(){
+           $('#myAnswer').html('');	
+      	$('#reset').hide();
+     	$('#submit').show();
+     		$('#submit').show();
+     			$('#title').show();	
+     				$('#land-water').show();
+     	$('input[type=radio]').prop('checked',false);
+
+     					
+    });
+
+</script>
+
+
+</div><!--end wrapper-->
+</body>
+</html>
