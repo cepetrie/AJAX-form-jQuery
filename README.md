@@ -1,5 +1,4 @@
-AJAX Form: For this assignment, you'll build an AJAX based form, which will give the user a series of three questions.  
-These questions must appear one at a time, and the data retrieved from the question must be stored for submission via AJAX.
+AJAX Form: For this assignment, you'll build an AJAX based form, which will give the user a series of three questions. These questions must appear one at a time, and the data retrieved from the question must be stored for submission via AJAX.
 
 3 Questions: These questions will allow the user to 'pick a pet' for adoption based upon an either/or scenario.  
 
